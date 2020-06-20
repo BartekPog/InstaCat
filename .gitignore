@@ -1,0 +1,6 @@
+credentials.py
+.vscode/
+.env/
+__pycache__/
+config/
+cat.jpeg.REMOVE_ME
