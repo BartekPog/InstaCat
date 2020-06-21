@@ -4,7 +4,7 @@ Cats rule the internet, so why can't we rule the cats? This repository contains 
 
 You can see at what it can do [here](https://www.instagram.com/basiclykitties/).
 
-![cat screenshot](https://github.com/BartekPog/InstaCat/images/screen.jpg)
+![cat screenshot](https://github.com/BartekPog/InstaCat/blob/master/images/screen.jpg)
 
 ## How does it work
 
