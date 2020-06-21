@@ -22,7 +22,8 @@ def getPrompt() -> str:
         with open(RESPONSE, "r") as f:
             response = json.load(f)
 
-        prevPrompt = response['output'].split(".")[0]+"."
+        dotsInPrompt = len(prompt.split('.'))
+        prevPrompt = response['output'].split(".")[dotsInPrompt]+"."
 
     except:
         prevPrompt = "This kitten is adoreable. isn't it?"+" "*randint(0, 7)
