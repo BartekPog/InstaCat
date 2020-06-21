@@ -5,11 +5,11 @@ from credentials import api_key
 
 from uploading import upload
 
-CAT_IMG = "cat.jpeg"
-PROMPT = "prompt.txt"
-RESPONSE = "text-response.txt"
-HASHTAGS = "hashtags.txt"
-BANNED = "banned-words.txt"
+CAT_IMG = "data/cat.jpeg"
+PROMPT = "data/prompt.txt"
+RESPONSE = "data/text-response.txt"
+HASHTAGS = "data/hashtags.txt"
+BANNED = "data/banned-words.txt"
 RELOAD_SCRIPT = "reload.sh"
 PARAGRAPHS = 2
 
@@ -31,7 +31,7 @@ def getPrompt() -> str:
 
 
 def getScriptString() -> str:
-    return ["./"+RELOAD_SCRIPT, api_key, getPrompt()]
+    return ["./"+RELOAD_SCRIPT, api_key, getPrompt(), RESPONSE, CAT_IMG]
 
 
 def getText() -> str:

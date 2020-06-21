@@ -3,9 +3,9 @@
 __pycache__/
 config/
 deprecated/
-cat.jpeg.REMOVE_ME
-cat.jpeg
 text-response.txt
+cat.jpeg
+cat.jpeg.REMOVE_ME
 credentials.py
 timestampfile
 logs.txt

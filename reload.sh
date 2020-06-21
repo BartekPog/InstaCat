@@ -1,6 +1,6 @@
 #!/bin/bash
 cd $(dirname $0)
-curl --output cat.jpeg 'https://thiscatdoesnotexist.com/' \
+curl --output $4 'https://thiscatdoesnotexist.com/' \
   -H 'authority: thiscatdoesnotexist.com' \
   -H 'cache-control: max-age=0' \
   -H 'dnt: 1' \
@@ -17,7 +17,7 @@ curl --output cat.jpeg 'https://thiscatdoesnotexist.com/' \
 
 
 
-curl --output text-response.txt \
+curl --output $3 \
     -F "text=$2" \
     -H 'api-key:'$1 \
     https://api.deepai.org/api/text-generator 
