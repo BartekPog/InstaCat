@@ -14,7 +14,7 @@ This project is a fusion of [This cat does not exist](https://thiscatdoesnotexis
 
 Currently the repository aims for **Ubuntu** users, because of all the system paths and integration with bash.
 
-To setup Python enviroment run:
+To setup **Python enviroment** run:
 
 ```bash
 virtualenv .env
@@ -22,7 +22,7 @@ source .env/bin/activate
 pip install instabot
 ```
 
-Then to add credentials add file `credentials.py`. It's content shall look like this:
+Then to add **credentials** add file `credentials.py`. It's content shall look like this:
 
 ```python
 username = "INSTAGRAM_USERNAME"
@@ -30,7 +30,7 @@ password = "INSTAGRAM_PASSWORD"
 api_key = "DeepAI_API_KEY"
 ```
 
-After that to setup automatic posting run `crontab -e` and add the following line to your _crontab_:
+After that to **setup automatic** posting run `crontab -e` and add the following line to your _crontab_:
 
 ```
 0 */4 * * * PATH_TO_REPOSITORY/run_upload.sh >> PATH_TO_REPOSITORY/logs.txt 2>&1
@@ -40,4 +40,4 @@ This will make your system run `run_upload.sh` script every 4 hours and save the
 
 ## Important
 
-This repository has not been authorized by Facebook, DeepAI or Nvidia. Keep that in mind when trying out. Use at own risk. Just do not harm any kittens.
+This repository **has not been authorized** by Facebook, DeepAI or Nvidia. Keep that in mind when trying out. Use at **own risk**. Just do not harm any kittens.
