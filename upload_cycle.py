@@ -26,7 +26,7 @@ def getPrompt() -> str:
         prevPrompt = response['output'].split(".")[dotsInPrompt]+"."
 
     except:
-        prevPrompt = "This kitten is adoreable. isn't it?"+" "*randint(0, 7)
+        prevPrompt = "This kitten is adoreable, isn't it?"+" "*randint(0, 7)
 
     return " ".join([prevPrompt, prompt])
 
@@ -36,8 +36,6 @@ def getScriptString() -> str:
 
 
 def getText() -> str:
-    prompt = getPrompt()
-
     try:
         with open(RESPONSE, "r") as f:
             response = json.load(f)
@@ -50,7 +48,10 @@ def getText() -> str:
 
         text = response['output']
 
-    noPrompt = text[len(prompt):]
+    with open(PROMPT, "r") as f:
+        purePrompt = f.read()
+
+    noPrompt = text.split(purePrompt, 1)[1]
     finalText = "\n\n".join(noPrompt.split("\n\n")[:PARAGRAPHS])
 
     return finalText
