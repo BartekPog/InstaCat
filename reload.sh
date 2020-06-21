@@ -18,6 +18,6 @@ curl --output cat.jpeg 'https://thiscatdoesnotexist.com/' \
 
 
 curl --output text-response.txt \
-    -F 'text=@prompt.txt' \
-    -H 'api-key:quickstart-QUdJIGlzIGNvbWluZy4uLi4K' \
+    -F "text=$2" \
+    -H 'api-key:'$1 \
     https://api.deepai.org/api/text-generator 

@@ -1,6 +1,7 @@
 import json
 import subprocess
-from random import sample
+from random import sample, randint
+from credentials import api_key
 
 from uploading import upload
 
@@ -13,14 +14,42 @@ RELOAD_SCRIPT = "reload.sh"
 PARAGRAPHS = 4
 
 
-def getText() -> str:
-    with open(RESPONSE, "r") as f:
-        response = json.load(f)
-
+def getPrompt() -> str:
     with open(PROMPT, "r") as f:
         prompt = f.read()
 
-    text = response['output']
+    try:
+        with open(RESPONSE, "r") as f:
+            response = json.load(f)
+
+        prevPrompt = response['output'].split(".")[0]+"."
+
+    except:
+        prevPrompt = "This kitten is adoreable. isn't it?"+" "*randint(0, 7)
+
+    return " ".join([prevPrompt, prompt])
+
+
+def getScriptString() -> str:
+    return ["./"+RELOAD_SCRIPT, api_key, getPrompt()]
+
+
+def getText() -> str:
+    with open(PROMPT, "r") as f:
+        prompt = f.read()
+
+    try:
+        with open(RESPONSE, "r") as f:
+            response = json.load(f)
+
+        text = response['output']
+    except:
+        reloadScript()
+        with open(RESPONSE, "r") as f:
+            response = json.load(f)
+
+        text = response['output']
+
     noPrompt = text[len(prompt):]
     finalText = "\n\n".join(noPrompt.split("\n\n")[:PARAGRAPHS])
 
@@ -37,7 +66,7 @@ def getTags() -> str:
 
 
 def reloadScript():
-    subprocess.run(["./"+RELOAD_SCRIPT])
+    subprocess.run(getScriptString())
 
     with open(BANNED, "r") as f:
         swearWords = f.read().lower().split()
@@ -46,7 +75,7 @@ def reloadScript():
 
     while any([word in swearWords for word in text.split()]):
         print("reloading")
-        subprocess.run(["./"+RELOAD_SCRIPT])
+        subprocess.run(getScriptString())
 
 
 def fullCycle():
@@ -60,4 +89,4 @@ def fullCycle():
 
 if __name__ == "__main__":
     fullCycle()
-    # print("done")
+    print("done")
