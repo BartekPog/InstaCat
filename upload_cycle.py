@@ -11,7 +11,7 @@ RESPONSE = "text-response.txt"
 HASHTAGS = "hashtags.txt"
 BANNED = "banned-words.txt"
 RELOAD_SCRIPT = "reload.sh"
-PARAGRAPHS = 4
+PARAGRAPHS = 2
 
 
 def getPrompt() -> str:
@@ -35,8 +35,7 @@ def getScriptString() -> str:
 
 
 def getText() -> str:
-    with open(PROMPT, "r") as f:
-        prompt = f.read()
+    prompt = getPrompt()
 
     try:
         with open(RESPONSE, "r") as f:
