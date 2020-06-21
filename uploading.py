@@ -1,10 +1,5 @@
-from instapy_cli import client
 from credentials import username, password
 from instabot import Bot
-
-# def upload(description: str, img: str):
-#     with client(username, password) as cli:
-#         cli.upload(img, description)
 
 
 def upload(description: str, img: str):

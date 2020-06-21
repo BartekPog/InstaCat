@@ -1,4 +1,5 @@
-
+#!/bin/bash
+cd $(dirname $0)
 curl --output cat.jpeg 'https://thiscatdoesnotexist.com/' \
   -H 'authority: thiscatdoesnotexist.com' \
   -H 'cache-control: max-age=0' \

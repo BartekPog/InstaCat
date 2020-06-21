@@ -1,5 +1,5 @@
 import json
-import os
+import subprocess
 from random import sample
 
 from uploading import upload
@@ -8,6 +8,8 @@ CAT_IMG = "cat.jpeg"
 PROMPT = "prompt.txt"
 RESPONSE = "text-response.txt"
 HASHTAGS = "hashtags.txt"
+BANNED = "banned-words.txt"
+RELOAD_SCRIPT = "reload.sh"
 PARAGRAPHS = 4
 
 
@@ -34,9 +36,28 @@ def getTags() -> str:
     return " ".join(finalTags)
 
 
-if __name__ == "__main__":
+def reloadScript():
+    subprocess.run(["./"+RELOAD_SCRIPT])
+
+    with open(BANNED, "r") as f:
+        swearWords = f.read().lower().split()
+
+    text = getText()
+
+    while any([word in swearWords for word in text.split()]):
+        print("reloading")
+        subprocess.run(["./"+RELOAD_SCRIPT])
+
+
+def fullCycle():
     dsc = getText() + "   \n\n" + getTags()
+    print("Uploading")
     upload(dsc, CAT_IMG)
-    print("uploaded")
-    os.system("./cats.sh")
-    print("prepared")
+
+    print("Preparing for next upload")
+    reloadScript()
+
+
+if __name__ == "__main__":
+    fullCycle()
+    # print("done")

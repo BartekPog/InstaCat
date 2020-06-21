@@ -1,6 +1,11 @@
-credentials.py
 .vscode/
 .env/
 __pycache__/
 config/
+deprecated/
 cat.jpeg.REMOVE_ME
+cat.jpeg
+text-response.txt
+credentials.py
+timestampfile
+logs.txt
