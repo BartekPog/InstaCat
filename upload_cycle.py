@@ -15,6 +15,7 @@ PARAGRAPHS = 2
 
 
 def getPrompt() -> str:
+
     with open(PROMPT, "r") as f:
         prompt = f.read()
 
@@ -22,13 +23,16 @@ def getPrompt() -> str:
         with open(RESPONSE, "r") as f:
             response = json.load(f)
 
-        dotsInPrompt = len(prompt.split('.'))
-        prevPrompt = response['output'].split(".")[dotsInPrompt]+"."
+        text = response['output']
+
+        noPrompt = text.split(prompt, 1)[1]
+
+        begining = ". ".join(noPrompt.split('.')[:2])
 
     except:
-        prevPrompt = "This kitten is adoreable, isn't it?"+" "*randint(0, 7)
+        begining = "This kitten is adoreable, isn't it?"+" "*randint(0, 7)
 
-    return " ".join([prevPrompt, prompt])
+    return " ".join([begining, prompt])
 
 
 def getScriptString() -> str:
