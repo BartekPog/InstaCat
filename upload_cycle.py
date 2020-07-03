@@ -11,7 +11,7 @@ RESPONSE = "data/text-response.txt"
 HASHTAGS = "data/hashtags.txt"
 BANNED = "data/banned-words.txt"
 RELOAD_SCRIPT = "reload.sh"
-PARAGRAPHS = 2
+PARAGRAPHS = 3
 
 
 def getPrompt() -> str:
@@ -27,12 +27,24 @@ def getPrompt() -> str:
 
         noPrompt = text.split(prompt, 1)[1]
 
-        begining = ". ".join(noPrompt.split('.')[:2])
+        begining = ". ".join(noPrompt.split('.')[:3])
 
     except:
         begining = "This kitten is adoreable, isn't it?"+" "*randint(0, 7)
 
-    return " ".join([begining, prompt])
+    randTexts = [
+        "So adorable.",
+        "I love his paws and eyes.",
+        "Just think about petting him. Wouldn't that be great?",
+        "Imagine having one of those kitties.",
+        "Cats are amazing."
+        "I can tell you a story about one kitten.",
+        "Fluffy paws is what i like the most"
+    ]
+
+    randPart = sample(randTexts, 1)[0]
+
+    return " ".join([begining, randPart, prompt])
 
 
 def getScriptString() -> str:
