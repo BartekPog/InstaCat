@@ -39,7 +39,9 @@ def getPrompt() -> str:
         "Imagine having one of those kitties.",
         "Cats are amazing."
         "I can tell you a story about one kitten.",
-        "Fluffy paws is what i like the most"
+        "Fluffy paws is what i like the most",
+        "I like cats and dogs",
+        "Pets are great"
     ]
 
     randPart = sample(randTexts, 1)[0]

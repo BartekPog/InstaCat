@@ -2,7 +2,7 @@
 
 Cats rule the internet, so why can't we rule the cats? This repository contains a script that posts fake cat images with computer generated description on Instagram.
 
-You can see at what it can do [here](https://www.instagram.com/basiclykitties/).
+You can see at what it can do [here](https://www.instagram.com/suspiciouskitties/).
 
 ![cat screenshot](https://github.com/BartekPog/InstaCat/blob/master/images/screen.jpg)
 
